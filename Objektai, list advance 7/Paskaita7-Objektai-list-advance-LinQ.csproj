@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Objektai__list_advance_7</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ND\3-Egzistavimo tikrinimas\" />
+    <Folder Include="ND\4-Unikalios reikšmės\" />
+    <Folder Include="ND\7-Paėmimas\" />
+    <Folder Include="ND\12-Puslapiavimas\" />
+    <Folder Include="ND\14-Filtravimas pagal indeksą\" />
+    <Folder Include="ND\15-Sąrašų apjungimas %28paprastas%29\" />
+  </ItemGroup>
+
+</Project>

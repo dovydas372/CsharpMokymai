@@ -34,7 +34,7 @@ namespace paskaita_8
             //touple.Item2 = 1;
             Console.WriteLine(touple.Item2);
             Console.WriteLine(touple.Item3);
-           
+           //sadasdsd
 
         }
     }

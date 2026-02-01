@@ -20,7 +20,7 @@ namespace paskaita_8
             var i = 0;
             while (i < 500000) {
                 i++;
-                touple.add(1);
+                //touple.add(1);
               
             };
            
@@ -33,6 +33,7 @@ namespace paskaita_8
             ////toupleNew.Item1;
             //touple.Item2 = 1;
             Console.WriteLine(touple.Item2);
+            Console.WriteLine(touple.Item3);
            
 
         }

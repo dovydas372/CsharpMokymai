@@ -9,6 +9,7 @@
             Console.WriteLine("feat branch");
                         Console.WriteLine("konfliktas2");
             Console.WriteLine("konfliktas");
+               Console.WriteLine("konfliktas3");
                  Console.WriteLine("konfliktas3");
         }
     }

@@ -6,6 +6,8 @@
   <Project Path="Pamoka2-ciklai/Pamoka2-ciklai.csproj" Id="0c2ce99a-66e7-4e63-b22a-b08f4b19dcb3" />
   <Project Path="Pamoka4_metodai2/Pamoka4_metodai2.csproj" Id="6256c263-815d-4d69-ae90-9e36270d2756" />
   <Project Path="Pamoka5-object-programavimas/Pamoka5-object-programavimas.csproj" Id="e5a5058e-d5f9-440d-91fe-8662c7ef4295" />
+  <Project Path="paskaita-10-API/paskaita-10-API.csproj" Id="b57e19d0-a3f0-467c-87fc-ad16110d1621" />
+  <Project Path="paskaita-11-praktika-API-part2/paskaita-11-praktika-API-part2.csproj" Id="781094a8-46cb-4563-822d-5df8c8bf4381" />
   <Project Path="paskaita-8/paskaita-8.csproj" Id="bdd1d0cd-9890-4b23-908c-9829c695d012" />
   <Project Path="paskaita-9-gitHub/paskaita-9-gitHub.csproj" Id="a17a3e4c-f424-4dc8-a641-81f4f48c3e46" />
   <Project Path="Paveldejimas/Paskaita6-Paveldejimas.csproj" Id="ed843c62-4f1e-4980-8c97-3eeb65461274" />

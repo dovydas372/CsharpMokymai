@@ -1,0 +1,10 @@
+﻿namespace paskaita_11_praktika_API
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}

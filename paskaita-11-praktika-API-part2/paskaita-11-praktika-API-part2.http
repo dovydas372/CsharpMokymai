@@ -1,0 +1,6 @@
+@paskaita_11_praktika_API_part2_HostAddress = http://localhost:5105
+
+GET {{paskaita_11_praktika_API_part2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

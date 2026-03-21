@@ -17,9 +17,15 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         public IActionResult GautiVisas()
         {
-           
+            try 
+            {
 
-            return Ok(Uzduotys);
+                return Ok(Uzduotys);
+            }
+            catch ()
+            {
+                return 
+            }
         }
 
         [HttpGet("{id}")]

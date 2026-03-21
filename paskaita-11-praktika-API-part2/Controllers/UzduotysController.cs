@@ -4,7 +4,7 @@ using paskaita_11_praktika_API_part2.Models;
 
 namespace paskaita_11_praktika_API_part2.Controllers
 
-    /// pasibaigti taska su TRY CATCH tikrinimais ir normaliais erroru kodais
+/// pasibaigti taska su TRY CATCH tikrinimais ir normaliais erroru kodais
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,33 +17,148 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         public IActionResult GautiVisas()
         {
-            try 
+            try
             {
+                if (Uzduotys.Count == 0)
+                {
+                    return Ok("Užduočių sąrašas tuščias.");
+                }
+
 
                 return Ok(Uzduotys);
             }
-            catch ()
+
+            catch (Exception)
             {
-                return 
+                return Problem(
+                    detail: "Nepavyko gauti užduočių sąrašo.",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
             }
         }
 
         [HttpGet("{id}")]
 
-        public void GautiPagalId(int id)
-        { }
+        public ActionResult<Uzduotis> GautiPagalId(int id)
+        {
+            try
+            {
+                if (Uzduotys.Count == 0)
+                {
+                    return BadRequest("Užduočių sąrašas tuščias.");
+                }
+                else
+                {
+                    var uzduotis = Uzduotys.FirstOrDefault(uzd => uzd.Id == id);
+
+                    if (uzduotis == null)
+                    {
+                        return BadRequest($"Užduotis su ID {id} nerasta.");
+     
+                    }
+                    else
+                    {
+
+                        return Ok(uzduotis);
+
+                    }
+
+                }
+            }
+
+            catch (Exception)
+            {
+                return Problem(
+                    detail: "Nepavyko gauti užduočių sąrašo.",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
+
+            }
+
+        }
 
         [HttpPost]
 
-        public void Sukurti(Uzduotis task) { 
+        public IActionResult Sukurti(Uzduotis task)
+        {
 
-            Uzduotys.Add(task); 
+
+
+            try
+            {
+
+                if (string.IsNullOrEmpty(task.Pavadinimas))
+                {
+                    return BadRequest("Neivestas pavadinimas");
+                }
+
+                if (task.Id <= 0)
+                {
+                    return BadRequest("Neteisingas ID.");
+                }
+
+
+                Uzduotys.Add(task);
+                return Ok("užduotis pridėta");
+            }
+
+            catch (Exception)
+            {
+                return Problem(
+                    detail: "Nepavyko pridėti užduoties",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
+            }
 
         }
 
         [HttpPut("{id}")]
 
-        public void Atnaujinti(int id) { }
+        public IActionResult Atnaujinti(int id) {
+
+            try
+            {
+                if (Uzduotys.Count == 0)
+                {
+                    return BadRequest("Užduočių sąrašas tuščias.");
+                }
+                else
+                {
+                    var uzduotis = Uzduotys.FirstOrDefault(uzd => uzd.Id == id);
+
+                    if (uzduotis == null)
+                    {
+                        return BadRequest($"Užduotis su ID {id} nerasta.");
+
+                    }
+                    else
+                    {
+
+                        return Ok(uzduotis = );
+
+                    }
+
+                }
+            }
+
+            catch (Exception)
+            {
+                return Problem(
+                    detail: "Nepavyko gauti užduočių sąrašo.",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
+
+            }
+
+        }
 
         [HttpDelete("{id}")]
 

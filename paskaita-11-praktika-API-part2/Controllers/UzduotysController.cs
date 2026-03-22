@@ -31,7 +31,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
             catch (Exception)
             {
                 return Problem(
-                    detail: "Nepavyko gauti užduočių sąrašo.",
+                    detail: $"Nepavyko gauti užduočių sąrašo.",
                     statusCode: 500,
                     title: "Serverio klaida",
                     type: "https://httpstatuses.com/500"
@@ -56,14 +56,13 @@ namespace paskaita_11_praktika_API_part2.Controllers
                     if (uzduotis == null)
                     {
                         return BadRequest($"Užduotis su ID {id} nerasta.");
-     
-                    }
-                    else
-                    {
-
-                        return Ok(uzduotis);
 
                     }
+
+
+                    return Ok(uzduotis);
+
+
 
                 }
             }
@@ -106,6 +105,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
                 return Ok("užduotis pridėta");
             }
 
+
             catch (Exception)
             {
                 return Problem(
@@ -120,7 +120,8 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         [HttpPut("{id}")]
 
-        public IActionResult Atnaujinti(int id, Uzduotis atsiustaUzduotis) {
+        public IActionResult Atnaujinti(int id, Uzduotis atsiustaUzduotis)
+        {
 
             try
             {
@@ -152,7 +153,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
                         atsiustaUzduotis.Id = id;
                         Uzduotys[uzduotiesIndex] = atsiustaUzduotis;
                         return Ok($"Sėkmingai paupdeitinta uzduotis su ID: {id}");
-                       
+
                     }
 
                 }
@@ -173,7 +174,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         [HttpDelete("{id}")]
 
-        public IActionResult Istrinti(int id) 
+        public IActionResult Istrinti(int id)
         {
 
             try
@@ -194,9 +195,9 @@ namespace paskaita_11_praktika_API_part2.Controllers
                     }
                     else
                     {
-                       
-                        
-                       Uzduotys.RemoveAt(uzduotiesIndex);
+
+
+                        Uzduotys.RemoveAt(uzduotiesIndex);
                         return Ok($"Sėkmingai ištrinta uzduotis su ID: {id}");
 
                     }

@@ -6,8 +6,10 @@ namespace paskaita_11_praktika_API_part2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Vartotojai : ControllerBase
+    public class VartotojaiController : ControllerBase
     {
+
+        public static List<User> Vartotojai { get; set; } = new List<User>();
 
         [HttpPost("Vartotojas")]
         public IActionResult SukurtiVartotoja(User user)
@@ -34,7 +36,10 @@ namespace paskaita_11_praktika_API_part2.Controllers
                     return BadRequest("Neteisingas Email formatas.");
                 }
 
-                return Ok($"Vartotojas vardu: {user.Name} sėkmingai sukurtas!");
+                user.Id = Vartotojai.Count + 1;
+                Vartotojai.Add(user);
+
+                return Created($"/api/Vartotojai/{user.Id}", user);
             }
             catch (Exception)
             {
@@ -45,8 +50,6 @@ namespace paskaita_11_praktika_API_part2.Controllers
                     type: "https://httpstatuses.com/500"
                 );
             }
-
-
         }
 
     }

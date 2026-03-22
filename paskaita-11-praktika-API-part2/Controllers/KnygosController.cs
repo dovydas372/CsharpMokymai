@@ -17,12 +17,14 @@ namespace paskaita_11_praktika_API_part2.Controllers
             {
                 if (KnyguSarasas.Count == 0)
                 {
-                    return Ok("Knygų sąrašas tuščias.");
+                    return BadRequest("Knygų sąrašas tuščias.");
                 }
-
-                return Ok(KnyguSarasas);
+                else
+                {
+                    return Ok(KnyguSarasas);
+                }
             }
-           
+
             catch (Exception)
             {
                 return Problem(

@@ -83,7 +83,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         [HttpPost]
 
-        public IActionResult Sukurti(Uzduotis task)
+        public IActionResult Sukurti(Uzduotis siunciamaUzduotis)
         {
 
 
@@ -91,18 +91,18 @@ namespace paskaita_11_praktika_API_part2.Controllers
             try
             {
 
-                if (string.IsNullOrEmpty(task.Pavadinimas))
+                if (string.IsNullOrEmpty(siunciamaUzduotis.Pavadinimas))
                 {
                     return BadRequest("Neivestas pavadinimas");
                 }
 
-                if (task.Id <= 0)
+                if (siunciamaUzduotis.Id <= 0)
                 {
                     return BadRequest("Neteisingas ID.");
                 }
 
 
-                Uzduotys.Add(task);
+                Uzduotys.Add(siunciamaUzduotis);
                 return Ok("užduotis pridėta");
             }
 
@@ -120,7 +120,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         [HttpPut("{id}")]
 
-        public IActionResult Atnaujinti(int id) {
+        public IActionResult Atnaujinti(int id, Uzduotis atsiustaUzduotis) {
 
             try
             {
@@ -130,18 +130,29 @@ namespace paskaita_11_praktika_API_part2.Controllers
                 }
                 else
                 {
-                    var uzduotis = Uzduotys.FirstOrDefault(uzd => uzd.Id == id);
 
-                    if (uzduotis == null)
+                    if (atsiustaUzduotis == null)
                     {
-                        return BadRequest($"Užduotis su ID {id} nerasta.");
+                        return BadRequest("Neatsiųsti užduoties duomenys.");
+                    }
+
+                    var uzduotiesIndex = Uzduotys.FindIndex(uzd => uzd.Id == id);
+
+                    if (uzduotiesIndex == -1)
+                    {
+                        return NotFound($"Užduotis su ID {id} nerasta.");
 
                     }
                     else
                     {
-
-                        return Ok(uzduotis = );
-
+                        if (string.IsNullOrEmpty(atsiustaUzduotis.Pavadinimas))
+                        {
+                            return BadRequest("Neivestas pavadinimas");
+                        }
+                        atsiustaUzduotis.Id = id;
+                        Uzduotys[uzduotiesIndex] = atsiustaUzduotis;
+                        return Ok($"Sėkmingai paupdeitinta uzduotis su ID: {id}");
+                       
                     }
 
                 }
@@ -150,7 +161,7 @@ namespace paskaita_11_praktika_API_part2.Controllers
             catch (Exception)
             {
                 return Problem(
-                    detail: "Nepavyko gauti užduočių sąrašo.",
+                    detail: "Nepavyko atnaujinti užduoties.",
                     statusCode: 500,
                     title: "Serverio klaida",
                     type: "https://httpstatuses.com/500"
@@ -162,7 +173,50 @@ namespace paskaita_11_praktika_API_part2.Controllers
 
         [HttpDelete("{id}")]
 
-        public void Istrinti(int id) { }
+        public IActionResult Istrinti(int id) 
+        {
+
+            try
+            {
+                if (Uzduotys.Count == 0)
+                {
+                    return BadRequest("Užduočių sąrašas tuščias.");
+                }
+                else
+                {
+
+                    var uzduotiesIndex = Uzduotys.FindIndex(uzd => uzd.Id == id);
+
+                    if (uzduotiesIndex == -1)
+                    {
+                        return NotFound($"Užduotis su ID {id} nerasta.");
+
+                    }
+                    else
+                    {
+                       
+                        
+                       Uzduotys.RemoveAt(uzduotiesIndex);
+                        return Ok($"Sėkmingai ištrinta uzduotis su ID: {id}");
+
+                    }
+
+                }
+            }
+
+            catch (Exception)
+            {
+                return Problem(
+                    detail: "Nepavyko ištrinti užduoties.",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
+
+            }
+
+
+        }
 
 
 

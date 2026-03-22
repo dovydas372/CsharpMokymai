@@ -12,11 +12,41 @@ namespace paskaita_11_praktika_API_part2.Controllers
         [HttpPost("Vartotojas")]
         public IActionResult SukurtiVartotoja(User user)
         {
-            if(user.Email.Contains("@"))
-             return Ok($"Vartotojas vardu:{user.Name}. Sekmingia sukurtas!");
-            return BadRequest($"neteisingas Email formatas");
+            try
+            {
+                if (user == null)
+                {
+                    return BadRequest("Neatsiųsti vartotojo duomenys.");
+                }
 
-           
+                if (string.IsNullOrEmpty(user.Name))
+                {
+                    return BadRequest("Neįvestas vartotojo vardas.");
+                }
+
+                if (string.IsNullOrEmpty(user.Email))
+                {
+                    return BadRequest("Neįvestas el. paštas.");
+                }
+
+                if (!user.Email.Contains("@"))
+                {
+                    return BadRequest("Neteisingas Email formatas.");
+                }
+
+                return Ok($"Vartotojas vardu: {user.Name} sėkmingai sukurtas!");
+            }
+            catch (Exception)
+            {
+                return Problem(
+                    detail: "Nepavyko sukurti vartotojo.",
+                    statusCode: 500,
+                    title: "Serverio klaida",
+                    type: "https://httpstatuses.com/500"
+                );
+            }
+
+
         }
 
     }

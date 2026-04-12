@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="API-ND-26-04-11/API-ND-26-04-11.csproj" Id="dd99b59e-e387-403f-b0b5-570e8194b57f" />
+  <Project Path="API-ND-26-04-12/API-ND-26-04-12.csproj" Id="97fd5cad-8805-40ae-bf3b-b8fb12d93a9f" />
+  <Project Path="Data/Data.csproj" Id="0df677d3-7588-416e-950b-9c7859c97034" />
   <Project Path="FilesCRUD/FilesCRUD.csproj" Id="92884b42-dc48-448e-98a3-27d07c2313ad" />
   <Project Path="Objektai, list advance 7/Paskaita7-Objektai-list-advance-LinQ.csproj" Id="791a1842-90a7-4805-9c53-063faaade4e0" />
   <Project Path="Pamoka 3/Pamoka3-metodai.csproj" Id="1a0a182e-8a15-4fa6-b1a8-122ed9268104" />

@@ -10,7 +10,10 @@ namespace paskaita_11_praktika_API_part2.Controllers
     [ApiController]
     public class UzduotysController : ControllerBase
     {
-        public static List<Uzduotis> Uzduotys { get; set; } = new List<Uzduotis>();
+        public static List<Uzduotis> Uzduotys { get; set; } = new List<Uzduotis>
+        {
+         new Uzduotis("Uzduotis1", true)
+        };
 
 
         [HttpGet]

@@ -18,6 +18,11 @@ namespace paskaita_11_praktika_API_part2.Models
             Pavadinimas = pavadinimas;
             ArAtlikta = arAtlikta;
         }
+
+        public Uzduotis()
+        {
+
+        }
     }
 }
 

@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\API-ND-26-04-12\API-ND-26-04-12.csproj" />
-  </ItemGroup>
-
 </Project>
